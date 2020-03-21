@@ -10,7 +10,8 @@ const middle          = require('./middleware/middleware');
 const logger          = middle.logger;
 
 // IMPORT ROUTERS
-
+const projects        = require('./routers/projectRouter');
+const actions         = require('./routers/actionRouter');
 
 // INITIATE EXPRESS AS SERVER
 const server          = express();
@@ -24,9 +25,11 @@ server
 	});
 
 // ROUTER - "./api/projects"
+server.use('/api/projects', projects);
+server.use('/projects', projects);
 
-
-// ROUTER - "./api/posts"
-
+// ROUTER - "./api/actions"
+// server.use('/api/actions', actions);
+// server.use('/actions', actions);
 
 module.exports = server;
