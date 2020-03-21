@@ -45,8 +45,37 @@ router
 				res.status(500).json({success: false, message: "No project found", error})
 			})
 	})
-	.put((req, res) => {})
-	.delete((req, res) => {});
+	.put((req, res) => {
+		const { id } = req.params;
+		const info = req.body;
+		db.update(id, info)
+			.then(project => {
+				!info.name && !info.description && project
+					? res.status(404).json({success: false, message: "Project not found"})
+					: res.status(200).json({success: true, message: "Project updated", Project: info})
+			})
+			.catch(error => {
+				res.status(500).json({success: false, message: "Project not updated", error})
+			})
+	})
+	.delete((req, res) => {
+		const { id } = req.params;
+		db.get(id)
+			.then(project => {
+				!project
+					? res.status(404).json({success: false, message: "User found"})
+					: db.remove(id)
+						.then(del => {
+							if (del) {res.status(200).json({success: true, project})}
+						})
+						.catch(error => {
+							res.status(500).json({success: false, message: "Project not removed", error})
+						})
+			})
+			.catch(error => {
+				res.status(500).json({success: false, message: "Project not removed", error})
+			})
+	});
 
 router
 	.route('/:id/actions')
