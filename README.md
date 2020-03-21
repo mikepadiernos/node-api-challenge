@@ -45,7 +45,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
       Code that extends the Express framework
 
 - [ ] Describe a Resource?<br>
-
+      An object to serve by express
 
 - [ ] What can the API return to help clients know if a request was successful?<br>
       An api can return a string with valid HTTP indicating a successful request.
