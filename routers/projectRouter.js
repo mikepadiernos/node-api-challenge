@@ -5,7 +5,7 @@ const router = express.Router();
 // IMPORT DATABASES
 const db = require('../data/helpers/projectModel');
 
-// HANDLER FOR "/"
+// HANDLERs FOR "/"
 router
 	.route('/')
 	.get((req, res) => {
@@ -20,10 +20,10 @@ router
 	})
 	.post((req, res) => {
 		const info = req.body;
-		console.log("Info: ", info);
+		// console.log("Info: ", info);
 		db.insert(info)
 			.then(project => {
-				console.log("Project: ", project);
+				// console.log("Project: ", project);
 				!info.name && !info.description
 					? res.status(400).json({success: false, message: "Provide a name & description"})
 					: res.status(201).json({success: true, message: "Project added", Project: project})
@@ -33,6 +33,7 @@ router
 			})
 	});
 
+// HANDLERS FOR "/:id"
 router
 	.route('/:id')
 	.get((req, res) => {
@@ -77,6 +78,7 @@ router
 			})
 	});
 
+// HANDLERS FOR "/:id/actions"
 router
 	.route('/:id/actions')
 	.get((req, res) => {

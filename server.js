@@ -29,7 +29,7 @@ server.use('/api/projects', projects);
 server.use('/projects', projects);
 
 // ROUTER - "./api/actions"
-// server.use('/api/actions', actions);
-// server.use('/actions', actions);
+server.use('/api/actions', actions);
+server.use('/actions', actions);
 
 module.exports = server;
