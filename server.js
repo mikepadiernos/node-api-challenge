@@ -4,10 +4,10 @@ const cors            = require('cors');
 const helmet          = require('helmet');
 
 // IMPORT MIDDLEWARES
-// const middle          = require('./middleware/middleware');
+const middle          = require('./middleware/middleware');
 
 // MIDDLEWARES
-// const logger          = middle.logger;
+const logger          = middle.logger;
 
 // IMPORT ROUTERS
 
